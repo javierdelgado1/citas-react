@@ -1,25 +1,74 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, Fragment} from 'react';
 
-function App() {
+function Formulario (){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <h2>Crear Cita</h2>
+
+      <form>
+                  <label>Nombre Mascota</label>
+                  <input 
+                    type="text" 
+                    name="mascota"
+                    className="u-full-width" 
+                    placeholder="Nombre Mascota" 
+                  />
+
+                  <label>Nombre Dueño</label>
+                  <input 
+                    type="text" 
+                    name="propietario"
+                    className="u-full-width"  
+                    placeholder="Nombre Dueño de la Mascota" 
+                  />
+
+                  <label>Fecha</label>
+                  <input 
+                    type="date" 
+                    className="u-full-width"
+                    name="fecha"
+                  />               
+
+                  <label>Hora</label>
+                  <input 
+                    type="time" 
+                    className="u-full-width"
+                    name="hora" 
+                  />
+
+                  <label>Sintomas</label>
+                  <textarea 
+                    className="u-full-width"
+                    name="sintomas"
+                  ></textarea>
+
+                  <button type="submit" className="button-primary u-full-width">Agregar</button>
+          </form>
+  </Fragment>
+  ); 
+}
+function App() {
+  
+  const [citas, guardarCitas] = useState([]);
+  console.log(citas);
+
+
+  return (
+    <Fragment>
+
+      <h1>Administrador de pacientes</h1>
+      <div className="container" >
+        <div className="row" >
+          <div className="one-half column">
+            <Formulario></Formulario>
+          </div>
+          <div className="one-half column">
+
+          </div>
+
+        </div>
+      </div>
+    </Fragment>
   );
 }
 
