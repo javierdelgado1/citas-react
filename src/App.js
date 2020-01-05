@@ -1,5 +1,18 @@
 import React, {useState, Fragment} from 'react';
 
+function Cita ({cita}){
+  
+  return (
+    <div className="cita">
+<p>Mascota: <span >{cita.mascota}</span></p>
+      <p>Dueño: <span >{cita.propietario}</span></p>
+      <p>Fecha: <span >{cita.fecha}</span></p>
+      <p>Hora: <span >{cita.hora}</span></p>
+      <p>Sintomas: <span >{cita.sintomas}</span></p>
+
+    </div>
+  );
+}
 function Formulario (props){
   const [cita, actualizarCita] = useState({
     mascota:'',
@@ -88,7 +101,15 @@ function App() {
               crearCita={crearCita}></Formulario>
           </div>
           <div className="one-half column">
-
+            {
+              citas.map((cita, index) =>(
+                <Cita 
+                  key={index}
+                  index={index}
+                  cita={cita}
+                  />
+              ))
+            }
           </div>
 
         </div>
