@@ -14,13 +14,14 @@ function Cita ({cita}){
   );
 }
 function Formulario (props){
-  const [cita, actualizarCita] = useState({
+  const stateInicial = {
     mascota:'',
     propietario:'',
     fecha:'',
     hora:'',
     sintomas:''
-  });
+  };
+  const [cita, actualizarCita] = useState(stateInicial);
   const actualizarState = e =>{
     actualizarCita({
       ...cita,
@@ -30,6 +31,7 @@ function Formulario (props){
   const enviarCita = e =>{
     e.preventDefault();
     props.crearCita(cita);
+    actualizarCita(stateInicial)
   }
   return (
     <Fragment>
@@ -42,6 +44,7 @@ function Formulario (props){
           className="u-full-width" 
           placeholder="Nombre Mascota" 
           onChange={actualizarState}
+          value={cita.mascota}
         />
 
         <label>Nombre Dueño</label>
@@ -51,6 +54,8 @@ function Formulario (props){
           className="u-full-width"  
           placeholder="Nombre Dueño de la Mascota" 
           onChange={actualizarState}
+          value={cita.propietario}
+
         />
 
         <label>Fecha</label>
@@ -59,6 +64,8 @@ function Formulario (props){
           className="u-full-width"
           name="fecha"
           onChange={actualizarState}
+          value={cita.fecha}
+
         />               
 
         <label>Hora</label>
@@ -67,6 +74,8 @@ function Formulario (props){
           className="u-full-width"
           name="hora" 
           onChange={actualizarState}
+          value={cita.hora}
+
         />
 
         <label>Sintomas</label>
@@ -74,6 +83,8 @@ function Formulario (props){
           className="u-full-width"
           name="sintomas"
           onChange={actualizarState}
+          value={cita.sintomas}
+
         ></textarea>
 
         <button type="submit" className="button-primary u-full-width">Agregar</button>
@@ -88,11 +99,11 @@ function App() {
 
     const nuevasCitas = [...citas, cita];
     guardarCitas(nuevasCitas);
+    
   }
 
   return (
     <Fragment>
-
       <h1>Administrador de pacientes</h1>
       <div className="container" >
         <div className="row" >
@@ -111,7 +122,6 @@ function App() {
               ))
             }
           </div>
-
         </div>
       </div>
     </Fragment>
