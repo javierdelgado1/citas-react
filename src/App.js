@@ -108,6 +108,9 @@ function App() {
     nuevasCitas.splice(index,1);
     guardarCitas(nuevasCitas);
   } 
+
+  const titulo =Object.keys(citas).length ===0? 'No hay citas' : 'Administrar las citas';
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -118,6 +121,7 @@ function App() {
               crearCita={crearCita}></Formulario>
           </div>
           <div className="one-half column">
+  <h2>{titulo}</h2>
             {
               citas.map((cita, index) =>(
                 <Cita 
